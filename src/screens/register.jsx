@@ -28,6 +28,7 @@ const RegisterForm = () => {
         formData
       ); // Adjust the URL if needed
       const data = response.data;
+      console.log(data)
       if (data.success) {
         navigate("/login");
       }
