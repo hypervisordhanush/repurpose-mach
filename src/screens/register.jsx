@@ -27,9 +27,8 @@ const RegisterForm = () => {
         "https://repurpose-server.vercel.app/customers",
         formData
       ); // Adjust the URL if needed
-      const data = response.data;
-      console.log(response)
-      if (data.success) {
+      const data = response;
+      if (data.status = 200) {
         navigate("/login");
       }
     } catch (error) {
