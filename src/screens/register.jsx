@@ -21,7 +21,7 @@ const RegisterForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // Add your form submission logic here
-    // console.log('Form data:', formData);
+    console.log('Form data:', formData);
     try {
       const response = await axios.post(
         "https://repurpose-server.vercel.app/customers",
