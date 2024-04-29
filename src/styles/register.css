@@ -120,6 +120,10 @@
   .submit:hover {
     background-color: rgb(56, 90, 194);
   }
+  .error{
+    color:red;
+    text-align: center;
+  }
   
   @keyframes pulse {
     from {

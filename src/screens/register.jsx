@@ -12,7 +12,10 @@ const RegisterForm = () => {
     password: "",
     confirmPassword: "",
   });
+
+  const [passwordError, setPasswordError] = useState("");
   const navigate = useNavigate();
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -20,18 +23,24 @@ const RegisterForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add your form submission logic here
-    console.log('Form data:', formData);
+
+    // Check if passwords match
+    if (formData.password !== formData.confirmPassword) {
+      setPasswordError("Passwords do not match");
+      return;
+    } else {
+      setPasswordError(""); // Clear any existing error message
+    }
+
     try {
       const response = await axios.post(
         "https://repurpose-server.vercel.app/customers",
         formData
-      ); // Adjust the URL if needed
+      );
       const data = response;
-        navigate("/login");
+      navigate("/login");
     } catch (error) {
-      alert("Something went wrong! Please try again.");
-      console.log("Login process failed");
+      console.error("Registration process failed");
       console.error(error);
     }
   };
@@ -104,6 +113,7 @@ const RegisterForm = () => {
           />
           <span>Confirm password</span>
         </label>
+        {passwordError && <p className="error">{passwordError}</p>}
         <button type="submit" className="submit">
           Submit
         </button>
