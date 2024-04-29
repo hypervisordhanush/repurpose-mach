@@ -28,7 +28,7 @@ const RegisterForm = () => {
         formData
       ); // Adjust the URL if needed
       const data = response;
-      if (data.status = 200) {
+      if (data.status === 200) {
         navigate("/login");
       }
     } catch (error) {
